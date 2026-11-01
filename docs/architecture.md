@@ -23,7 +23,7 @@ The CRM supports:
 - Project budget tracking
 - Lead status tracking
 - Follow-up scheduling
-- Contact history
+- Follow-up dates and last-contacted tracking
 - Dashboard reporting
 
 ## Workflow
