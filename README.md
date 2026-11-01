@@ -88,6 +88,18 @@ solvex-ai-automation/
 └── examples/
     └── sample-lead.json
 ```
+## Installing the CRM Dashboard
+
+The dashboard and follow-up reminders are powered by a Google Apps Script in [`scripts/crm-dashboard.gs`](scripts/crm-dashboard.gs).
+
+1. Open your lead management Google Sheet.
+2. Make sure the leads tab is named `Sheet1` and its columns are: Lead ID, Date Received, Full Name, Email, Phone, Business Name, Service, Message, Lead Source, Status, Project Budget, How Heard, Follow-up Date, Last Contacted.
+3. Go to **Extensions → Apps Script**, delete the default code, and paste in the contents of `crm-dashboard.gs`.
+4. Save, choose `buildDashboard` in the function dropdown, and click **Run**. Approve the permissions when Google asks.
+5. A **Dashboard** tab appears, along with a **SolveX CRM** menu in the sheet.
+6. Use **SolveX CRM → Turn on daily reminders** to receive a daily email listing leads whose follow-up date has arrived.
+
+The script keeps no credentials. Reminder emails go to the spreadsheet owner unless `ALERT_EMAIL` is set at the top of the file.
 
 ## Business Value
 
