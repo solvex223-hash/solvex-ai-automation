@@ -1,26 +1,24 @@
 # SolveX Lead Capture & CRM Automation
 
-**An automated lead management system built by SolveX to capture business enquiries, organize leads, send email notifications, and support follow-ups.**
+An automated lead management system built by SolveX. It captures business enquiries, stores them in a Google Sheets CRM, notifies the team by email, and gives a live dashboard of lead activity.
 
 ## Overview
 
-The SolveX Lead Capture & CRM Automation system streamlines how businesses receive and manage enquiries.
-
-It connects a Tally enquiry form to Make.com, Google Sheets, and Gmail, creating an automated workflow that reduces manual data entry and keeps incoming leads organized.
+A prospective client fills in an online enquiry form. Within seconds the lead is saved in a CRM spreadsheet, the SolveX team gets an email, and the dashboard updates. No manual data entry is needed.
 
 ## Key Features
 
-- **Lead Capture:** Collects enquiries through a structured Tally form.
-- **Workflow Automation:** Processes form submissions through Make.com.
-- **CRM Management:** Stores and organizes lead information in Google Sheets.
-- **Email Notifications:** Sends Gmail notifications when new enquiries arrive.
-- **Lead Status Tracking:** Tracks leads through different stages of the sales process.
-- **Follow-up Management:** Records follow-up dates and contact history.
-- **CRM Dashboard:** Provides an overview of lead activity and performance.
+- **Lead Capture:** Structured Tally enquiry form (name, contact details, business, service, budget, project description, how they found us).
+- **Workflow Automation:** Make.com receives each submission through a webhook and processes it.
+- **CRM Storage:** Each lead is added to a Google Sheets CRM with an ID, date, source and status.
+- **Email Notifications:** Gmail alerts the team to every new enquiry with the full lead details.
+- **Status Tracking:** Dropdown pipeline stages (New, Contacted, Interested, Proposal Sent, Negotiating, Converted, Lost) with row colours.
+- **Follow-up Tracking:** Follow-up dates are set automatically for new leads, with a Last Contacted column for manual updates.
+- **CRM Dashboard:** An Apps Script dashboard shows totals, pipeline by status, leads by service, source and budget, and overdue follow-ups.
 
 ## System Architecture
 
-```text
+```
 Potential Customer
        |
        v
@@ -30,15 +28,13 @@ Tally Enquiry Form
 Make.com Webhook
        |
        v
-Google Sheets CRM
-       |
-       +------> Gmail Notification
+Google Sheets CRM -------> Gmail Notification
        |
        v
-Lead Tracking & Follow-up
+Status & Follow-up Tracking
        |
        v
-CRM Dashboard
+CRM Dashboard (Apps Script)
 ```
 
 ## Technology Stack
@@ -48,72 +44,76 @@ CRM Dashboard
 | Tally | Lead capture form |
 | Make.com | Workflow automation |
 | Google Sheets | CRM and lead database |
+| Google Apps Script | Dashboard and follow-up reminders |
 | Gmail | Email notifications |
 
 ## Workflow
 
 1. A potential customer submits the SolveX enquiry form.
 2. Tally sends the submission to a Make.com webhook.
-3. Make.com processes the submitted information.
+3. Make.com maps the answers to CRM columns.
 4. The lead is added to the Google Sheets CRM.
 5. Gmail sends a notification about the new enquiry.
-6. The lead is tracked and managed through the CRM.
+6. The team updates the lead's status as it progresses, and the dashboard reflects the change.
 
 ## Project Screenshots
 
 ### Tally Enquiry Form
-![Tally Form](screenshots/tally-form.png)
+![Tally enquiry form](docs/screenshots/tally-form.png)
 
 ### Make.com Automation Workflow
-![Make Workflow](screenshots/make-workflow.png)
+![Make.com workflow](docs/screenshots/make-workflow.png)
 
 ### Google Sheets CRM
-![Google Sheets CRM](screenshots/google-sheets-crm.png)
+![Google Sheets CRM](docs/screenshots/google-sheets-crm.png)
 
 ### Gmail Notification
-![Gmail Notification](screenshots/gmail-notification.png)
+![Gmail notification](docs/gmail-notification.png)
 
 ### CRM Dashboard
-![CRM Dashboard](screenshots/crm-dashboard.png)
+![CRM dashboard](docs/crm-dashboard.png)
 
 ## Project Structure
 
-```text
+```
 solvex-ai-automation/
 ├── README.md
 ├── docs/
 │   ├── architecture.md
 │   ├── workflow.md
-│   └── setup-guide.md
-├── screenshots/
-│   ├── tally-form.png
-│   ├── make-workflow.png
-│   ├── google-sheets-crm.png
+│   ├── setup-guide.md
+│   ├── crm-dashboard.png
 │   ├── gmail-notification.png
-│   └── crm-dashboard.png
+│   └── screenshots/
 └── examples/
+    └── sample-lead.json
 ```
 
 ## Business Value
 
 This solution helps businesses:
 
-- Respond to new enquiries more efficiently.
-- Reduce repetitive administrative work.
-- Keep lead information organized.
-- Monitor sales opportunities.
-- Maintain a more consistent follow-up process.
+- Respond to new enquiries faster.
+- Cut repetitive data entry.
+- Keep lead information in one organised place.
+- See how many leads sit at each stage of the pipeline.
+- Follow up consistently using due dates and status tracking.
+
+## Limitations
+
+- The CRM is a Google Sheets setup, suited to small teams and moderate lead volumes.
+- Status and Last Contacted are updated manually by the team.
+- The dashboard refreshes through formulas, and it is rebuilt from the SolveX CRM menu when its layout changes.
 
 ## Built By
 
-**SolveX — AI Automation & Digital Solutions**
+**SolveX: AI Automation & Digital Solutions**
 
 *Innovate. Automate. Elevate.*
 
-Website: https://solvex.com.ng
-
-GitHub: https://github.com/solvex223-hash
+Website: [https://solvex.com.ng](https://solvex.com.ng)
+GitHub: [https://github.com/solvex223-hash](https://github.com/solvex223-hash)
 
 ---
 
-*This repository documents a SolveX lead capture and CRM automation project. Screenshots use demonstration data; sensitive customer information and credentials should never be published.*
+*This repository documents a SolveX lead capture and CRM automation project. Screenshots use demonstration data. Customer information, webhook URLs and credentials are never published.*
