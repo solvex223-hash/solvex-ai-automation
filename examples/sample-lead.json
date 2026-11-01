@@ -1,0 +1,13 @@
+{
+  "lead_id": "SX-20261101-001",
+  "date_received": "2026-11-01 10:30:00",
+  "full_name": "John Example",
+  "email": "john@example.com",
+  "phone": "+2348000000000",
+  "business_name": "Example Business",
+  "service_interested_in": "Website Development",
+  "project_budget": "$301-$500",
+  "message": "I need a professional business website.",
+  "lead_source": "Google Search",
+  "status": "New"
+}
